@@ -23,7 +23,7 @@ export default new Vuex.Store({
       state.activeBlog = blog
     },
     setComments(state, data){
-      console.log(data)
+      
       state.comments = data
     }
   },
@@ -59,6 +59,15 @@ export default new Vuex.Store({
       } catch (error) {
         console.error(error)
       }
+    },
+    async createBlog({dispatch, state}, blog){
+      let res = await api.post('blogs', {title:blog.title, body:blog.body, creatorEmail:state.profile.email})
+      
+      dispatch("getBlogs")
+    },
+    async editBlog({commit}, blog){
+      let res = await api.put(`blogs/${blog.id}`, blog)
+      commit("setActiveBlog", blog)
     }
   },
 });
