@@ -17,7 +17,7 @@
 <script>
 export default {
   name: "comment",
-  data(){return{editing:false, eComment:{}} },
+  data(){return{editing:false, eComment:commentData} },
   props:{
     commentData:{
       type: Object,
@@ -32,8 +32,14 @@ export default {
   methods: {
     editC(){
       this.editing= true
-      this.eComment=commentData
-    }
+    },
+    finishEdit(){
+      this.$store.dispatch("editComment", this.eComment)
+      this.editing=false
+    },
+  deleteC(){
+    
+  }
   }
 }
 </script>

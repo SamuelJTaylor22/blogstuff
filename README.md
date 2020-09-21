@@ -57,9 +57,9 @@ Once you have the appropriate functionality, add a theme the site in whatever wa
 #### Functionality
 
 - [X] Users Can Register, Login, and Logout (this should work out of the box, don't break it)
-- [ ] Once logged in Users can Create Edit and Delete Blogs
+- [X] Once logged in Users can Create Edit and Delete Blogs
 - [ ] Once logged in Users can Create Edit and Delete Comments
-- [ ] Users can only modify/delete data they created
+- [X] Users can only modify/delete data they created
 
 
 ### API Routes

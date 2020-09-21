@@ -85,6 +85,10 @@ export default new Vuex.Store({
     async addComment({commit}, comment){
       let res = await api.post('comments', comment)
       commit('addComment', comment)
+    },
+    async editComment({dispatch}, comment){
+      let res = await api.put(`comments/${comment.id}`, comment)
+      
     }
 
   },
