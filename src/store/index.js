@@ -22,9 +22,16 @@ export default new Vuex.Store({
     setActiveBlog(state, blog){
       state.activeBlog = blog
     },
+    removeBlog(state, id){
+      state.blogs = state.blogs.filter(b => b.id != id)
+    },
     setComments(state, data){
-      
+            
       state.comments = data
+    },
+    addComment(state, data){
+      state.comments.push(data)
+      state.comments= state.comments
     }
   },
   actions: {
@@ -68,6 +75,17 @@ export default new Vuex.Store({
     async editBlog({commit}, blog){
       let res = await api.put(`blogs/${blog.id}`, blog)
       commit("setActiveBlog", blog)
+    },
+    async deleteBlog({commit},id){
+      let res = await api.delete(`blogs/${id}`)
+      commit("removeBlog", id)
+      commit("setActiveBlog", {})
+      router.push({ name: "Home" })
+    },
+    async addComment({commit}, comment){
+      let res = await api.post('comments', comment)
+      commit('addComment', comment)
     }
+
   },
 });
